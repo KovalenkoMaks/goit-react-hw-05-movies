@@ -3,7 +3,6 @@ import { getMovieCast } from 'components/utils/API';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CastList } from './Cast.styled';
-import image from '../../images/default_cast.jpg';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
