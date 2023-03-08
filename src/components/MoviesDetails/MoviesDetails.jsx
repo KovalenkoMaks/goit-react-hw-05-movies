@@ -15,7 +15,7 @@ function MoviesDetails() {
     });
   }, [moviesId]);
   const lastPage = location.state?.from ?? '/';
-
+  console.log(location.state);
   if (film.length === 0) return null;
 
   return (
@@ -49,10 +49,10 @@ function MoviesDetails() {
         </div>
       </Container>
       <LinkContainer>
-        <Link to={'cast'} id={moviesId}>
+        <Link to={'cast'} id={moviesId} state={{ from: lastPage }}>
           Cast
         </Link>
-        <Link to={'reviews'} id={moviesId}>
+        <Link to={'reviews'} id={moviesId} state={{ from: lastPage }}>
           Reviews
         </Link>
       </LinkContainer>
