@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FilmListEl, FilmItem } from './FilmList.styled';
 function FilmList({ films }) {
-  // console.log(films);
   return (
     <FilmListEl>
       {films?.map(e => (

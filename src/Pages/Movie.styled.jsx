@@ -1,14 +1,12 @@
 import styled from '@emotion/styled';
-// const StyledMovie = styled.ul`
-//   color: red;
-// `;
-// export { StyledMovie };
 const FilmListEl = styled.ul`
   list-style: none;
   position: relative;
 `;
 const FilmItem = styled.li`
   a {
+    text-decoration: none;
+    color: black;
     @media screen and (min-width: 768px) {
       &:hover::after,
       &:focus::after {

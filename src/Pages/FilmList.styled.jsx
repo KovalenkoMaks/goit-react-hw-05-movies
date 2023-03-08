@@ -6,6 +6,8 @@ const FilmListEl = styled.ul`
 `;
 const FilmItem = styled.li`
   a {
+    color: black;
+    text-decoration: none;
     @media screen and (min-width: 768px) {
       &:hover::after,
       &:focus::after {

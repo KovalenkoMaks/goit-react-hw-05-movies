@@ -1,26 +1,28 @@
-import { Link, useParams, Outlet, useNavigate } from 'react-router-dom';
+import { Link, useParams, Outlet, useLocation } from 'react-router-dom';
 
 import { useEffect, useState, Suspense } from 'react';
 
 import { getMovieById } from 'components/utils/API';
-import { Container, LinkContainer } from './MoviesDetails.styled';
+import { Container, LinkContainer, LinkEl } from './MoviesDetails.styled';
 
 function MoviesDetails() {
   const [film, setFilm] = useState([]);
   const { moviesId } = useParams();
-  const navigate = useNavigate();
-  const goBack = () => navigate(-1);
+  const location = useLocation();
   useEffect(() => {
     getMovieById(moviesId).then(resp => {
       setFilm(resp);
     });
   }, [moviesId]);
+  const lastPage = location.state?.from ?? '/';
+
   if (film.length === 0) return null;
+
   return (
     <>
-      <button type="button" onClick={goBack}>
+      <LinkEl to={lastPage} state={{ from: location }}>
         Go back
-      </button>
+      </LinkEl>
       <Container>
         <img
           src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
@@ -54,10 +56,6 @@ function MoviesDetails() {
           Reviews
         </Link>
       </LinkContainer>
-      {/* 
-      <Routes>
-        <Route path="cast" element={<Cast />} />
-      </Routes> */}
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>

@@ -1,4 +1,3 @@
-// import { useSearchParams } from 'react-router-dom';
 import { getMovieCast } from 'components/utils/API';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';

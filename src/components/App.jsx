@@ -1,7 +1,8 @@
 import { getPopularMovie } from './utils/API';
 import { useEffect, useState } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import NotFound from '../Pages/NotFound';
 
 export const App = () => {
   const [films, setFilms] = useState([]);
@@ -31,14 +32,10 @@ export const App = () => {
             element={<Movie search={search} setSearch={setSearch} />}
           />
           <Route path="movies/:moviesId" element={<MoviesDetails />}>
-            {/* <Suspense fallback={<div>Loading...</div>}> */}
-            {/* <Routes> */}
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
-            {/* </Routes> */}
-            {/* </Suspense> */}
           </Route>
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>

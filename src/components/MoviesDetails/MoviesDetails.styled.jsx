@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
   gap: 40px;
-  padding: 40px;
+  padding: 20px;
 
   &::after {
     content: '';
@@ -35,13 +36,32 @@ const LinkContainer = styled.div`
   font-size: 20px;
   display: flex;
   gap: 30px;
-  padding: 20px;
-
+  padding-left: 20px;
+  margin-bottom: 20px;
   a {
     text-decoration: none;
     color: black;
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: black;
+    outline: 1px solid teal;
+    background-color: teal;
+    padding: 10px;
+    border-radius: 10px;
   }
 `;
 
-export { Container, LinkContainer };
-// url(../images/bg/headermobale-bgi.jpg)
+const LinkEl = styled(Link)`
+  margin-left: 15px;
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+  color: black;
+  outline: 1px solid teal;
+  background-color: teal;
+  padding: 10px;
+  border-radius: 10px;
+`;
+
+export { Container, LinkContainer, LinkEl };
