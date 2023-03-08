@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const Container = styled.div`
   display: flex;
   gap: 40px;
-  margin: 40px;
+  padding: 40px;
 
   &::after {
     content: '';

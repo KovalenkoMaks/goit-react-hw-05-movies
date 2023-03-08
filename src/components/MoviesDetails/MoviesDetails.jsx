@@ -1,6 +1,6 @@
-import { Link, useParams, Outlet } from 'react-router-dom';
+import { Link, useParams, Outlet, useNavigate } from 'react-router-dom';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 
 import { getMovieById } from 'components/utils/API';
 import { Container, LinkContainer } from './MoviesDetails.styled';
@@ -8,7 +8,8 @@ import { Container, LinkContainer } from './MoviesDetails.styled';
 function MoviesDetails() {
   const [film, setFilm] = useState([]);
   const { moviesId } = useParams();
-
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
   useEffect(() => {
     getMovieById(moviesId).then(resp => {
       setFilm(resp);
@@ -17,6 +18,9 @@ function MoviesDetails() {
   if (film.length === 0) return null;
   return (
     <>
+      <button type="button" onClick={goBack}>
+        Go back
+      </button>
       <Container>
         <img
           src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
@@ -54,7 +58,9 @@ function MoviesDetails() {
       <Routes>
         <Route path="cast" element={<Cast />} />
       </Routes> */}
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }

@@ -32,8 +32,10 @@ export const App = () => {
           />
           <Route path="movies/:moviesId" element={<MoviesDetails />}>
             {/* <Suspense fallback={<div>Loading...</div>}> */}
+            {/* <Routes> */}
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
+            {/* </Routes> */}
             {/* </Suspense> */}
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
